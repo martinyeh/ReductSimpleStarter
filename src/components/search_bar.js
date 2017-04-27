@@ -8,7 +8,20 @@ class SearchBar extends Component {
     }
 
     render(){
-    	return <input onChange={(event)=>console.log(event.target.value)}/>;
+    	//every time you call setState function, then it will re-render the dom
+    	return (
+    	<div className="search-bar">
+    		<input id="term"
+    			value= {this.state.term}
+    			onChange={ event=>this.onInputChanged(event.target.value) }
+    		/>
+    	</div>
+    	);
+    }
+
+    onInputChanged(term){
+		this.setState( {term});		
+		this.props.onSearchTermChange(term);
     }
 }
 
